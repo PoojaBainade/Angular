@@ -1,0 +1,138 @@
+
+<table>
+    <tr>
+        <td>
+            <h1 style="background-color:rgb(164, 231, 231)  ; text-align: center;">Registration</h1>
+            <table>
+                <div class="registration">
+                    <form (ngSubmit)="doFormSubmit()" #passengerForm="ngForm">
+                        <table>
+                            <tr>
+                                <div class="form-group">
+                                    <td><label>Passenger Name</label></td>
+                                    <td><input type="text" #passengerName="ngModel" pattern="[a-zA-Z]+"
+                                            [(ngModel)]="p.passengerName" class="form-control" id="pName" name="pName"
+                                            placeholder=" " required>
+                                        <div *ngIf="passengerName.invalid">
+                                            <span style="color: red;" *ngIf="passengerName.errors?.['required']">
+
+                                                Passenger Name is required Field
+                                            </span>
+                                            <span style="color: red;" *ngIf="passengerName.errors?.['pattern']">
+                                                Passenger Name is not valid
+                                            </span>
+                                        </div>
+                                    </td>
+                                </div>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+
+                                <div class="form-group">
+                                    <td><label>Passenger Age</label></td>
+                                    <td><input type="text" [(ngModel)]="p.passengerAge" class="form-control" id="pAge"
+                                            name="pAge" #passengerAge="ngModel" placeholder="In Years" required>
+                                        <div *ngIf="passengerAge.invalid">
+                                            <span style="color: red;" *ngIf="passengerAge.errors?.['required']">
+
+                                                Passenger Age is required Field
+                                            </span>
+                                            <span style="color: red;" *ngIf="passengerAge.errors?.['pattern']">
+                                                Passenger Age is not valid
+                                            </span>
+                                        </div>
+
+                                </div>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+
+                                <div class="form-group">
+                                    <td><label>Passenger City</label></td>
+                                    <td><input type="text" #city="ngModel" pattern="[a-zA-Z]+" [(ngModel)]="p.city"
+                                            class="form-control" id="pCity" name="pCity" placeholder=" " required>
+                                        <div *ngIf="city.invalid">
+                                            <span style="color: red;" *ngIf="city.errors?.['required']">
+
+                                                Passenger City is required Field
+                                            </span>
+                                            <span style="color: red;" *ngIf="city.errors?.['pattern']">
+                                                Passenger City is not valid
+                                            </span>
+                                        </div>
+                                    </td>
+                                </div>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+
+                                <div class="form-group">
+
+                                    <td><label>Passenger Phone Number</label></td>
+                                    <td><input type="text" [(ngModel)]="p.phoneNumber" class="form-control" id="pPhone"
+                                            name="pPhone" #phoneNumber="ngModel" required
+                                            pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]">
+                                        <div *ngIf="phoneNumber.invalid">
+                                            <span style="color: red;" *ngIf="phoneNumber.errors?.['required']">
+
+                                                Passenger Phone Number is required Field
+                                            </span>
+                                            <span style="color: red;" *ngIf="phoneNumber.errors?.['pattern']">
+                                                Passenger Phone Number is not valid
+                                            </span>
+                                        </div>
+                                    </td>
+                                </div>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+
+                                <div class="form-group">
+                                    <td><label>Passenger Email</label></td>
+                                    <td><input type="text" [(ngModel)]="p.email" class="form-control" id="pAge"
+                                            name="pAge" #email="ngModel" placeholder=" " required>
+                                        <div *ngIf="email.invalid">
+                                            <span style="color: red;" *ngIf="email.errors?.['required']">
+
+                                                Passenger Email is required Field
+                                            </span>
+                                            <span style="color: red;" *ngIf="email.errors?.['pattern']">
+                                                Passenger Email is not valid
+                                            </span>
+                                        </div>
+
+                                </div>
+                            </tr>
+                        </table>
+                        <button
+                            style="border: 1px ;background-color:rgb(47, 66, 66);color: bisque ;margin-left:80%;margin-bottom: 5%;"
+                            type="submit" class="btn btn-primary"
+                            [disabled]="passengerForm.form.invalid">Submit</button>
+                    </form>
+                </div>
+            </table>
+        </td>
+        <td>
+            <br />
+            <table>
+                <div *ngFor="let x of allPassengers">
+                    <table>
+                        <h2>Registration Completed!</h2>
+                        <tr>PRNNumber : {{x.prnNumber}}</tr>
+                        <tr>PassengerName : {{x.passengerName}}</tr>
+                        <tr>PassengerAge : {{x.passengerAge}}</tr>
+                        <tr>City : {{x.city}}</tr>
+                        <tr>PhoneNumber : {{x.phoneNumber}}</tr>
+                        <tr>Email : {{x.email}}</tr><br />
+                        <hr />
+                    </table>
+                </div>
+
+            </table>
+        </td>
+    </tr>
+</table>
